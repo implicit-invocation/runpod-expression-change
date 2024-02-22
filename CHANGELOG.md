@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/implicit-invocation/runpod-expression-change/compare/1.0.2...1.0.3) (2024-02-22)
+
+
+### Bug Fixes
+
+* remove unnecessary files ([40f68ee](https://github.com/implicit-invocation/runpod-expression-change/commit/40f68ee0a758346cb0feb112c68d4031d01bff01))
+
 ## [1.0.2](https://github.com/implicit-invocation/runpod-expression-change/compare/1.0.1...1.0.2) (2024-02-22)
 
 
