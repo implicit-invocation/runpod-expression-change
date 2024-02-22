@@ -36,12 +36,15 @@ WORKDIR /comfyui/custom_nodes
 
 RUN git clone https://github.com/cubiq/ComfyUI_IPAdapter_plus.git
 
+RUN mkdir -p /comfyui/models/ipadater
 RUN wget -O /comfyui/models/ipadater/ip-adapter_sd15.safetensors https://huggingface.co/h94/IP-Adapter/resolve/main/models/ip-adapter_sd15.safetensors
+RUN mkdir -p /comfyui/models/clip_vision
 RUN wget -O /comfyui/models/clip_vision/CLIP-ViT-H-14-laion2B-s32B-b79K.safetensors https://huggingface.co/h94/IP-Adapter/resolve/main/models/image_encoder/model.safetensors
 
 RUN git clone https://github.com/Kosinkadink/ComfyUI-Advanced-ControlNet.git
 RUN cd ComfyUI-Advanced-ControlNet && pip3 install -r requirements.txt && cd ..
 
+RUN mkdir -p /comfyui/models/controlnet
 RUN wget -O /comfyui/models/controlnet/control_v11f1p_sd15_depth_fp16.safetensors https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11f1p_sd15_depth_fp16.safetensors
 
 RUN git clone https://github.com/Fannovel16/comfyui_controlnet_aux/
@@ -53,9 +56,11 @@ RUN cd ComfyUI-KJNodes && pip3 install -r requirements.txt && cd ..
 RUN git clone https://github.com/storyicon/comfyui_segment_anything.git
 RUN cd comfyui_segment_anything && pip3 install -r requirements.txt && cd ..
 
+RUN mkdir -p /comfyui/models/grounding-dino
 RUN wget -O /comfyui/models/grounding-dino/GroundingDINO_SwinT_OGC.cfg.py https://huggingface.co/ShilongLiu/GroundingDINO/resolve/main/GroundingDINO_SwinT_OGC.cfg.py
 RUN wget -O /comfyui/models/grounding-dino/groundingdino_swint_ogc.pth https://huggingface.co/ShilongLiu/GroundingDINO/resolve/main/groundingdino_swint_ogc.pth
 
+RUN mkdir -p /comfyui/models/sams
 RUN wget -O /comfyui/models/sams/sam_hq_vit_h.pth https://huggingface.co/lkeab/hq-sam/resolve/main/sam_hq_vit_h.pth
 
 # Download checkpoints/vae/LoRA to include in image
