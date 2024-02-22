@@ -1,3 +1,10 @@
+# 1.0.0 (2024-02-22)
+
+
+### Features
+
+* all requirements for expression changing ([d0cc10b](https://github.com/implicit-invocation/runpod-expression-change/commit/d0cc10be47a1a46c2719e35b281251cfe0b557ad))
+
 ## [1.2.2](https://github.com/implicit-invocation/runpod-worker-comfy/compare/1.2.1...1.2.2) (2024-02-22)
 
 
