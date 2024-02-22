@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/implicit-invocation/runpod-expression-change/compare/1.0.0...1.0.1) (2024-02-22)
+
+
+### Bug Fixes
+
+* remove incorrect install ([dba4e0a](https://github.com/implicit-invocation/runpod-expression-change/commit/dba4e0afa15243de7d8d457ce870e5817ca17e20))
+
 # 1.0.0 (2024-02-22)
 
 
