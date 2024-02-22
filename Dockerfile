@@ -47,7 +47,7 @@ RUN cd ComfyUI-Advanced-ControlNet && pip3 install -r requirements.txt && cd ..
 RUN mkdir -p /comfyui/models/controlnet
 RUN wget -O /comfyui/models/controlnet/control_v11f1p_sd15_depth_fp16.safetensors https://huggingface.co/comfyanonymous/ControlNet-v1-1_fp16_safetensors/resolve/main/control_v11f1p_sd15_depth_fp16.safetensors
 
-RUN git clone https://github.com/Fannovel16/comfyui_controlnet_aux/
+RUN git clone https://github.com/Fannovel16/comfyui_controlnet_aux.git
 RUN cd comfyui_controlnet_aux && pip3 install -r requirements.txt && cd ..
 
 RUN git clone https://github.com/kijai/ComfyUI-KJNodes.git
