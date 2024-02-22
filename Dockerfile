@@ -35,7 +35,6 @@ RUN pip3 install runpod requests
 WORKDIR /comfyui/custom_nodes
 
 RUN git clone https://github.com/cubiq/ComfyUI_IPAdapter_plus.git
-RUN cd ComfyUI_IPAdapter_plus && pip3 install -r requirements.txt && cd ..
 
 RUN wget -O /comfyui/models/ipadater/ip-adapter_sd15.safetensors https://huggingface.co/h94/IP-Adapter/resolve/main/models/ip-adapter_sd15.safetensors
 RUN wget -O /comfyui/models/clip_vision/CLIP-ViT-H-14-laion2B-s32B-b79K.safetensors https://huggingface.co/h94/IP-Adapter/resolve/main/models/image_encoder/model.safetensors
