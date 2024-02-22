@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/implicit-invocation/runpod-expression-change/compare/1.0.1...1.0.2) (2024-02-22)
+
+
+### Bug Fixes
+
+* fix missing folders ([b860120](https://github.com/implicit-invocation/runpod-expression-change/commit/b860120e9f293ed4d954bb6732041705768c0010))
+
 ## [1.0.1](https://github.com/implicit-invocation/runpod-expression-change/compare/1.0.0...1.0.1) (2024-02-22)
 
 
