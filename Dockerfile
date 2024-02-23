@@ -31,6 +31,13 @@ RUN cd ComfyUI-KJNodes && pip3 install -r requirements.txt && cd ..
 RUN git clone https://github.com/storyicon/comfyui_segment_anything.git
 RUN cd comfyui_segment_anything && pip3 install -r requirements.txt && cd ..
 
+RUN git clone https://github.com/Jcd1230/rembg-comfyui-node.git
+RUN cd rembg-comfyui-node && pip3 install -r requirements.txt && cd ..
+
+RUN mkdir -p /root/.u2net
+RUN wget -O /root/.u2net/u2net.onnx https://github.com/danielgatis/rembg/releases/download/v0.0.0/u2net.onnx
+RUN pip3 install rembg[gpu]
+
 RUN mkdir -p /comfyui/models/grounding-dino
 RUN wget -O /comfyui/models/grounding-dino/GroundingDINO_SwinT_OGC.cfg.py https://huggingface.co/ShilongLiu/GroundingDINO/resolve/main/GroundingDINO_SwinT_OGC.cfg.py
 RUN wget -O /comfyui/models/grounding-dino/groundingdino_swint_ogc.pth https://huggingface.co/ShilongLiu/GroundingDINO/resolve/main/groundingdino_swint_ogc.pth
