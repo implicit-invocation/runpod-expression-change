@@ -44,6 +44,7 @@ RUN wget -O /comfyui/models/bert-base-uncased/vocab.txt https://huggingface.co/g
 RUN wget -O /comfyui/models/bert-base-uncased/tokenizer.json https://huggingface.co/google-bert/bert-base-uncased/resolve/main/tokenizer.json
 RUN wget -O /comfyui/models/bert-base-uncased/model.safetensors https://huggingface.co/google-bert/bert-base-uncased/resolve/main/model.safetensors
 
+RUN mkdir -p /root/.cache/torch/hub/checkpoints/
 RUN wget -O /root/.cache/torch/hub/checkpoints/mobilenet_v2-b0353104.pth https://download.pytorch.org/models/mobilenet_v2-b0353104.pth
 
 RUN mkdir -p /comfyui/custom_nodes/comfyui_controlnet_aux/ckpts/lllyasviel/Annotators/
