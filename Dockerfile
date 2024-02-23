@@ -1,38 +1,12 @@
 # Use Nvidia CUDA base image
-FROM nvidia/cuda:11.8.0-cudnn8-runtime-ubuntu22.04 as base
+FROM renderer/comfy-runpod-docker:1.0.0 as base
 
 # Prevents prompts from packages asking for user input during installation
 ENV DEBIAN_FRONTEND=noninteractive
 # Prefer binary wheels over source distributions for faster pip installations
 ENV PIP_PREFER_BINARY=1
 # Ensures output from python is printed immediately to the terminal without buffering
-ENV PYTHONUNBUFFERED=1 
-
-# Install Python, git and other necessary tools
-RUN apt-get update && apt-get install -y \
-    python3.10 \
-    python3-pip \
-    git \
-    wget
-
-RUN apt-get install -y libgl1 ffmpeg libsm6 libxext6
-
-# Clean up to reduce image size
-RUN apt-get autoremove -y && apt-get clean -y && rm -rf /var/lib/apt/lists/*
-
-# Clone ComfyUI repository
-RUN git clone https://github.com/comfyanonymous/ComfyUI.git /comfyui
-
-# Change working directory to ComfyUI
-WORKDIR /comfyui
-
-# Install ComfyUI dependencies
-RUN pip3 install --no-cache-dir torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121 \
-    && pip3 install --no-cache-dir xformers==0.0.21 \
-    && pip3 install -r requirements.txt
-
-# Install runpod
-RUN pip3 install runpod requests
+ENV PYTHONUNBUFFERED=1
 
 WORKDIR /comfyui/custom_nodes
 
@@ -63,6 +37,17 @@ RUN wget -O /comfyui/models/grounding-dino/groundingdino_swint_ogc.pth https://h
 
 RUN mkdir -p /comfyui/models/sams
 RUN wget -O /comfyui/models/sams/sam_hq_vit_h.pth https://huggingface.co/lkeab/hq-sam/resolve/main/sam_hq_vit_h.pth
+
+RUN mkdir -p /comfyui/models/bert-base-uncased
+RUN wget -O /comfyui/models/bert-base-uncased/config.json https://huggingface.co/google-bert/bert-base-uncased/resolve/main/config.json
+RUN wget -O /comfyui/models/bert-base-uncased/vocab.txt https://huggingface.co/google-bert/bert-base-uncased/resolve/main/vocab.txt
+RUN wget -O /comfyui/models/bert-base-uncased/tokenizer.json https://huggingface.co/google-bert/bert-base-uncased/resolve/main/tokenizer.json
+RUN wget -O /comfyui/models/bert-base-uncased/model.safetensors https://huggingface.co/google-bert/bert-base-uncased/resolve/main/model.safetensors
+
+RUN wget -O /root/.cache/torch/hub/checkpoints/mobilenet_v2-b0353104.pth https://download.pytorch.org/models/mobilenet_v2-b0353104.pth
+
+RUN mkdir -p /comfyui/custom_nodes/comfyui_controlnet_aux/ckpts/lllyasviel/Annotators/
+RUN wget -O /comfyui/custom_nodes/comfyui_controlnet_aux/ckpts/lllyasviel/Annotators/dpt_hybrid-midas-501f0c75.pt https://huggingface.co/lllyasviel/ControlNet/resolve/main/annotator/ckpts/dpt_hybrid-midas-501f0c75.pt
 
 # Download checkpoints/vae/LoRA to include in image
 RUN --mount=type=secret,id=CIVITAI_TOKEN \
